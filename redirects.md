@@ -32,3 +32,9 @@ RewriteRule ^robots.txt$ /robots-subdomains.txt [L]
 RewriteCond %{ENV:HTTPS} !on
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 ```
+```
+#!htaccess
+
+RewriteCond %{HTTP:X-HTTPS} !1
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+```
