@@ -32,8 +32,12 @@ RewriteRule ^robots.txt$ /robots-subdomains.txt [L]
 RewriteCond %{HTTPS} =off
 RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [QSA,L]
 ```
+```
+#!htaccess
 
-### Редирект с http на https ###
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+```
 ```
 #!htaccess
 
