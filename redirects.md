@@ -24,3 +24,11 @@ RewriteRule ^robots.txt$ /robots-main.txt [L]
 RewriteCond %{HTTP_HOST} ^subdomain.site.ru$
 RewriteRule ^robots.txt$ /robots-subdomains.txt [L]
 ```
+
+### Редирект с http на https ###
+```
+#!htaccess
+
+RewriteCond %{ENV:HTTPS} !on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+```
