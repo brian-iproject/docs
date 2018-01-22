@@ -11,6 +11,12 @@ RewriteCond %{HTTP_HOST} ^site.ru
 RewriteRule (.*) http://www.site.ru/$1 [R=301,L]
 ```
 
+### Редирект с www на без www ###
+```
+RewriteCond %{HTTP_HOST} ^www.site.ru
+RewriteRule (.*) http://site.ru/$1 [R=301,L]
+```
+
 ### Подмена robots.txt ###
 ```
 RewriteCond %{HTTP_HOST} ^site.ru$
