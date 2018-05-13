@@ -71,10 +71,18 @@ RewriteCond %{HTTPS} =on
 RewriteRule ^(.*)$ http://site.ru/$1 [R=301,L]
 ```
 
-### Настройка переадресации на папки со слешем в конце / ##
+### Настройка переадресации на папки со слешем в конце / ###
+#### Apache ####
 ```
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_URI} !\..{1,10}$
 RewriteCond %{REQUEST_URI} !(.*)/$
 RewriteRule ^(.*)$ http://www.site.ru/$1/ [L,R=301]
+```
+
+#### Nginx ####
+```
+if (!-f $request_filename){
+  rewrite ^([^.\?]*[^/])$ $1/ permanent;
+}
 ```
