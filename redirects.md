@@ -17,6 +17,12 @@ RewriteCond %{HTTP_HOST} ^www.site.ru
 RewriteRule (.*) http://site.ru/$1 [R=301,L]
 ```
 
+### Убираем лишние слеши ###
+```
+RewriteCond %{REQUEST_URI} ^(.*)/{2,}(.*)$
+RewriteRule . %1/%2 [R=301,L]
+```
+
 ### Подмена robots.txt ###
 ```
 RewriteCond %{HTTP_HOST} ^site.ru$
