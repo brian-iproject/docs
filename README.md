@@ -2,6 +2,7 @@
 
 ### Разработка ###
 * [GIT](git.md)
+* [PhpStorm](phpstorm.md)
 
 ### Битрикс ###
 
