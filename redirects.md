@@ -62,7 +62,7 @@ RewriteCond %{HTTPS} off
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NE]
 ```
 
-### Редирект с hhtps на http ###
+### Редирект с https на http ###
 ```
 RewriteCond %{SERVER_PORT} ^443$ [OR]
 RewriteCond %{HTTPS} =on
@@ -90,5 +90,20 @@ RewriteRule ^(.*)$ http://www.site.ru/$1/ [L,R=301]
 ```
 if (!-f $request_filename){
   rewrite ^([^.\?]*[^/])$ $1/ permanent;
+}
+```
+
+### Настройка переадресации с index.php на без index.php ###
+#### Apache ####
+```
+RewriteCond %{THE_REQUEST} /(.*)index.php.*$
+RewriteCond %{THE_REQUEST} !bitrix/admin/
+RewriteRule .* https://mir-lest.ru/%1 [R=301,L]
+```
+
+#### Nginx ####
+```
+if ($request_uri ~ "^(.*)index\.(?:php|html)") {
+    return 301 $1;
 }
 ```
